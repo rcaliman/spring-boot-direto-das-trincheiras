@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-AnimeServiceApplication<anime-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "academy.devdojo.AnimeServiceApplication",
+            "projectName": "anime-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
