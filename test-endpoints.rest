@@ -1,5 +1,54 @@
 GET http://localhost:8080/greetings/hi HTTP/1.1
 
+// PRODUCER
 ###
+GET http://localhost:8080/v1/producers?name=Mapa HTTP/1.1
 
+###
+GET http://localhost:8080/v1/producers HTTP/1.1
+
+###
+GET http://localhost:8080/v1/producers/1 HTTP/1.1
+
+###
+POST http://localhost:8080/v1/producers HTTP/1.1
+    Content-Type: application/json
+    x-api-key: 123
+
+    {
+        "name": "Aniplex"
+    }
+
+// ANIMES
+###
 GET http://localhost:8080/v1/animes HTTP/1.1
+
+###
+GET http://localhost:8080/v1/animes?name=Kaijuu-8gou HTTP/1.1
+
+###
+GET http://localhost:8080/v1/animes/1 HTTP/1.1
+
+###
+POST http://localhost:8080/v1/animes HTTP/1.1
+    Content-Type: application/json
+
+    {
+        "id": 4,
+        "name": "Akira"
+    }
+
+
+// HEROS
+###
+GET http://localhost:8080/v1/heroes HTTP/1.1
+
+###
+GET http://localhost:8080/v1/heroes/filter?name=Goku HTTP/1.1
+
+###
+GET http://localhost:8080/v1/heroes/filterList?names=Goku,Guts HTTP/1.1
+
+###
+GET http://localhost:8080/v1/heroes/Goku HTTP/1.1
+
