@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("greetings")
-@ComponentScan(basePackages = {"outside.devdojo", "academy.devdojo"})
+@ComponentScan(basePackages = { "outside.devdojo", "academy.devdojo" })
 public class HelloController {
 
     @GetMapping("hi")

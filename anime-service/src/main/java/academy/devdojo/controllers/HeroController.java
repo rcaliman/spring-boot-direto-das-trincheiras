@@ -1,6 +1,7 @@
 package academy.devdojo.controllers;
 
 import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,8 +31,8 @@ public class HeroController {
     @GetMapping("{name}")
     public String findByName(@PathVariable String name) {
         return HEROES
-            .stream()
-            .filter(hero -> hero.equalsIgnoreCase(name))
-            .findFirst().orElse("");
+                .stream()
+                .filter(hero -> hero.equalsIgnoreCase(name))
+                .findFirst().orElse("");
     }
 }

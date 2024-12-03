@@ -1,7 +1,6 @@
 package academy.devdojo.controllers;
 
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import academy.devdojo.domain.Anime;
 import academy.devdojo.mapper.AnimeMapper;
@@ -25,13 +25,15 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class AnimeController {
     private static final AnimeMapper MAPPER = AnimeMapper.INSTANCE;
+
     @GetMapping
     public ResponseEntity<List<AnimeGetResponse>> listAll(@RequestParam(required = false) String name) {
         log.debug("Request received to list all animes, param name '{}'", name);
 
         var animes = Anime.getAnimes();
         var animeGetResponseList = MAPPER.toAnimeGetResponseList(animes);
-        if (name == null) return ResponseEntity.ok(animeGetResponseList);
+        if (name == null)
+            return ResponseEntity.ok(animeGetResponseList);
 
         var response = animeGetResponseList.stream().filter(anime -> anime.getName().equalsIgnoreCase(name)).toList();
         return ResponseEntity.ok(response);
@@ -42,11 +44,11 @@ public class AnimeController {
         log.debug("Request to find anime by id: {}", id);
 
         var animeGetResponse = Anime.getAnimes()
-            .stream()
-            .filter(anime -> anime.getId().equals(id))
-            .findFirst()
-            .map(MAPPER::toAnimeGetResponse)
-            .orElse(null);
+                .stream()
+                .filter(anime -> anime.getId().equals(id))
+                .findFirst()
+                .map(MAPPER::toAnimeGetResponse)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Anime not Found"));
 
         return ResponseEntity.ok(animeGetResponse);
     }

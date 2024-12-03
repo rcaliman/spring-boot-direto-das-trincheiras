@@ -1,12 +1,13 @@
 package academy.devdojo.mapper;
 
+import academy.devdojo.domain.Producer;
+import academy.devdojo.request.ProducerPostRequest;
+import academy.devdojo.response.ProducerGetResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
-import academy.devdojo.domain.Producer;
-import academy.devdojo.request.ProducerPostRequest;
-import academy.devdojo.response.ProducerGetResponse;
+import java.util.List;
 
 @Mapper
 public interface ProducerMapper {
@@ -17,4 +18,6 @@ public interface ProducerMapper {
     Producer toProducer(ProducerPostRequest postRequest);
 
     ProducerGetResponse toProducerGetResponse(Producer producer);
+
+    List<ProducerGetResponse> toProducerGetResponseList(List<Producer> producers);
 }

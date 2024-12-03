@@ -1,7 +1,7 @@
-GET http://localhost:8080/greetings/hi HTTP/1.1
-
-// PRODUCER
 ###
+# PRODUCER
+###
+
 GET http://localhost:8080/v1/producers?name=Mapa HTTP/1.1
 
 ###
@@ -18,9 +18,13 @@ POST http://localhost:8080/v1/producers HTTP/1.1
     {
         "name": "Aniplex"
     }
-
-// ANIMES
 ###
+DELETE http://localhost:8080/v1/producers/1
+
+###
+# ANIMES
+###
+
 GET http://localhost:8080/v1/animes HTTP/1.1
 
 ###
@@ -38,9 +42,10 @@ POST http://localhost:8080/v1/animes HTTP/1.1
         "name": "Akira"
     }
 
-
-// HEROS
 ###
+# HEROS
+###
+
 GET http://localhost:8080/v1/heroes HTTP/1.1
 
 ###
