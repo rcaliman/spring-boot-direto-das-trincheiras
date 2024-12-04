@@ -21,16 +21,4 @@ public class Producer {
     @JsonProperty("name")
     private String name;
     private LocalDateTime createdAt;
-    private static List<Producer> producer = new ArrayList<>();
-
-    static {
-        var mapa = Producer.builder().id(1L).name("Mapa").createdAt(LocalDateTime.now()).build();
-        var kyotoAnimation = Producer.builder().id(2L).name("Kyoto Animation").createdAt(LocalDateTime.now()).build();
-        var madhouse = Producer.builder().id(3L).name("madhouse").createdAt(LocalDateTime.now()).build();
-        producer.addAll(List.of(mapa, kyotoAnimation, madhouse));
-    }
-
-    public static List<Producer> getProducers() {
-        return producer;
-    }
 }

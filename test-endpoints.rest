@@ -2,6 +2,7 @@
 # PRODUCER
 ###
 
+# @name GET_POR_NOME
 GET http://localhost:8080/v1/producers?name=Mapa HTTP/1.1
 
 ###
@@ -14,7 +15,6 @@ GET http://localhost:8080/v1/producers/1 HTTP/1.1
 ###
 
 POST http://localhost:8080/v1/producers HTTP/1.1
-    Content-Type: application/json
     x-api-key: 123
 
     {
@@ -28,13 +28,11 @@ DELETE http://localhost:8080/v1/producers/1
 ###
 
 PUT http://localhost:8080/v1/producers
-    Content-Type: application/json
 
     {
         "id": 3,
         "name": "Aniplex"
     }
-
 
 ###
 # ANIMES
@@ -53,7 +51,6 @@ GET http://localhost:8080/v1/animes/1 HTTP/1.1
 ###
 
 POST http://localhost:8080/v1/animes HTTP/1.1
-    Content-Type: application/json
 
     {
         "id": 4,
@@ -67,7 +64,6 @@ DELETE http://localhost:8080/v1/animes/1
 ###
 
 PUT http://localhost:8080/v1/animes
-    Content-Type: application/json
 
     {
         "id": 1,
