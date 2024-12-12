@@ -5,10 +5,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import academy.devdojo.domain.Producer;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
 
+import academy.devdojo.domain.Producer;
+import external.Connection;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+
+@Repository
+@RequiredArgsConstructor
+@Log4j2
 public class ProducerHardCodedRepository {
-    final private static List<Producer> PRODUCERS = new ArrayList<>();
+    private final static List<Producer> PRODUCERS = new ArrayList<>();
+    @Qualifier(value = "connectionMongoDB")
+    private final Connection connection;
 
     static {
         var mapa = Producer.builder().id(1L).name("Mapa").createdAt(LocalDateTime.now()).build();
@@ -26,6 +37,7 @@ public class ProducerHardCodedRepository {
     }
 
     public List<Producer> findByName(String name) {
+        log.debug(connection);
         return PRODUCERS.stream().filter(producer -> producer.getName().equalsIgnoreCase(name)).toList();
     }
 

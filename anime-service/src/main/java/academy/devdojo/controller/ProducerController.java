@@ -1,4 +1,4 @@
-package academy.devdojo.controllers;
+package academy.devdojo.controller;
 
 import java.util.List;
 
@@ -32,7 +32,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class ProducerController {
 
-    private static final ProducerMapper MAPPER = ProducerMapper.INSTANCE;
+    private final ProducerMapper mapper;
     private final ProducerService service;
 
     @GetMapping
@@ -41,7 +41,7 @@ public class ProducerController {
 
         var producers = service.findAll(name);
 
-        var producerGetResponse = MAPPER.toProducerGetResponseList(producers);
+        var producerGetResponse = mapper.toProducerGetResponseList(producers);
 
         return ResponseEntity.ok(producerGetResponse);
     }
@@ -52,7 +52,7 @@ public class ProducerController {
 
         var producer = service.findByIdOrThrowNotFound(id);
 
-        var producerGetResponse = MAPPER.toProducerGetResponse(producer);
+        var producerGetResponse = mapper.toProducerGetResponse(producer);
 
         return ResponseEntity.ok(producerGetResponse);
     }
@@ -63,11 +63,11 @@ public class ProducerController {
 
         log.info("{}", headers);
 
-        var producer = MAPPER.toProducer(producerPostRequest);
+        var producer = mapper.toProducer(producerPostRequest);
 
         var producerSaved = service.save(producer);
 
-        var producerPostResponse = MAPPER.toProducerPostResponse(producerSaved);
+        var producerPostResponse = mapper.toProducerPostResponse(producerSaved);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(producerPostResponse);
     }
@@ -86,7 +86,7 @@ public class ProducerController {
         log.debug("Request to update producer {}", request);
 
 
-        var producerToUpdate = MAPPER.toProducer(request);
+        var producerToUpdate = mapper.toProducer(request);
         service.update(producerToUpdate);
         return ResponseEntity.noContent().build();
     }

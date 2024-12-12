@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Repository;
+
 import academy.devdojo.domain.Anime;
 
+@Repository
 public class AnimeHardCodedRepository {
-    final private static List<Anime> ANIMES = new ArrayList<>();
+    private static final List<Anime> ANIMES = new ArrayList<>();
 
     static {
         var ninjaKamui = Anime.builder().id(1L).name("Ninja Kamui").build();
