@@ -7,4 +7,10 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-boot-direto-das-trincheiras</name>
 	<description>Projeto Exemplo do curso Spring Boot Direto Das Trincheiras</description>
+	<modules>
+		<module>
+			anime-service
+		</module>
+	</modules>
+	<packaging>pom</packaging>
 </project>
